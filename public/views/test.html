@@ -1,0 +1,34 @@
+<div class="large-padded-row">
+    <div class="padded-row">
+        <angucomplete 
+        	id="ex1"
+        	placeholder="请输入商品名称" 
+        	pause="100" 
+        	selectedobject="selectedProduct" 
+        	localdata="products" 
+        	searchfields="name" 
+        	titlefield="name" 
+        	minlength="1" 
+        	inputclass="form-control form-control-small" 
+        	matchclass="highlight" />
+    </div>
+    
+    <div class="" ng-show="selectedProduct">
+        你选择的是:<span class="bold-span">{{selectedProduct.originalObject.name}}</span><br/> 编号是:<span class="bold-span">{{selectedProduct.originalObject.id}}</span>
+    </div>
+</div>   
+<!-- <div class="angucomplete-holder">
+	<input id="{{id}}_value" ng-model="searchStr" type="text" placeholder="{{placeholder}}" class="{{inputClass}}" onmouseup="this.select();" ng-focus="resetHideResults()" ng-blur="hideResults()" />
+	<div id="{{id}}_dropdown" class="angucomplete-dropdown" ng-if="showDropdown">
+		<div class="angucomplete-searching" ng-show="searching">搜索中...</div>
+		<div class="angucomplete-searching" ng-show="!searching && (!results || results.length == 0)">无返回结果</div>
+		<div class="angucomplete-row" ng-repeat="result in results" ng-mousedown="selectResult(result)" ng-mouseover="hoverRow()" ng-class="{\'angucomplete-selected-row\': $index == currentIndex}">
+		<div ng-if="imageField" class="angucomplete-image-holder">
+			<img ng-if="result.image && result.image != \'\'" ng-src="{{result.image}}" class="angucomplete-image"/>
+			<div ng-if="!result.image && result.image != \'\'" class="angucomplete-image-default"></div>
+		</div>
+		<div class="angucomplete-title" ng-if="matchClass" ng-bind-html="result.title"></div>
+		<div class="angucomplete-title" ng-if="!matchClass">{{ result.title }}</div>
+		<div ng-if="result.description && result.description != \'\'" class="angucomplete-description">{{result.description}}</div></div>
+	</div>
+</div> -->
