@@ -11,17 +11,66 @@ angular.module('searchModel',[])
 	    ];
 	})
 
+
+
+
+
+
+
+
+
+.directive('autoMarch',function () {
+    return {
+        restrict :'E',
+        scope: {
+            "placeholder": "@"
+        },
+        template :`<div>
+                        <input type="text" placeholder="{{placeholder}}" ng-model="searchContent" />
+                        <div ng-if="dropDown">
+                            <div ng-show="searching">搜索中···</div>
+                        </div>
+                   </div>`,
+        link: function (scope, elem, attrs) {
+            elem.find('input').on('keyup', function(event){             
+                if (!(event.which == 38 || event.which == 40 || event.which == 13)) {      //keyCode 38:向上箭头 40向下箭头 13回车键
+                    if (scope.searchContent == '') {                                //如果搜索无内容，则隐藏所有显示
+                        console.log('空')
+                    }
+                    console.log('不空')
+                } else {
+                    event.preventDefault();                              //如果是有上面几个键，则阻止事件发生，即,排除掉这几个按键
+                }
+            })
+
+            
+        }
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
     .directive('angucomplete', function ($parse, $http, $sce, $timeout) {
     return {
         restrict: 'EA',
         scope: {
             "id": "@id",
-            "placeholder": "@placeholder",
+            "placeholder": "@placeholder", //X
             "selectedObject": "=selectedobject",
             "url": "@url",
             "dataField": "@datafield",
-            "titleField": "@titlefield"
-,            "descriptionField": "@descriptionfield",
+            "titleField": "@titlefield",
+            "descriptionField": "@descriptionfield",
             "imageField": "@imagefield",
             "imageUri": "@imageuri",
             "inputClass": "@inputclass",
@@ -210,7 +259,7 @@ angular.module('searchModel',[])
                     if ($scope.results && ($scope.currentIndex + 1) < $scope.results.length) {
                         $scope.currentIndex ++;
                         $scope.$apply();
-                        event.preventDefault;
+                        event.ventDefault;
                         event.stopPropagation();
                     }
 
